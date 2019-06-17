@@ -16,8 +16,8 @@ goto boot
 
 :boot
 imgfree
-kernel http://${url}/${folder}/vmlinuz
-initrd http://${url}/${folder}/initrd
+kernel http://${url}/${folder}/k3os-vmlinuz-amd64
+initrd http://${url}/${folder}/k3os-initrd-amd64
 boot
 
 :k30s_exit
