@@ -1,12 +1,25 @@
 #!ipxe
-###
-### netboot.xyz-custom menu
-###
 
-:start
-echo Hello world!
-sleep 10
-goto custom_exit
+# k3os
 
-:custom_exit
+:k3os_menu
+set url 192.168.16.20
+menu k3os
+item latest k3os latest
+choose version || goto k30s_exit
+goto ${version}
+
+:latest
+echo ${cls}
+set folder distros/k3os
+goto boot
+
+:boot
+imgfree
+kernel http://${url}/${folder}/vmlinuz
+initrd http://${url}/${folder}/initrd
+boot
+
+:k30s_exit
+clear menu
 exit 0
